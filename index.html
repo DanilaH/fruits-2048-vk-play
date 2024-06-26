@@ -71,9 +71,9 @@
     var buildUrl = "Build";
     var loaderUrl = buildUrl + "/fruits-vk-play.loader.js";
     var config = {
-      dataUrl: buildUrl + "/372838ee86f843a63f5df87cb45a044f.data",
-      frameworkUrl: buildUrl + "/0b2d0489ed13beb502e2c7f14010177e.js",
-      codeUrl: buildUrl + "/1d1b21f42bc997abf625d87894d472be.wasm",
+      dataUrl: buildUrl + "/245161608b62ee720e3a81d5835821f5.data",
+      frameworkUrl: buildUrl + "/259af39a0f2a8e5ba4f2911bcf897399.js",
+      codeUrl: buildUrl + "/878d15d57e5eb49065a5712e35878979.wasm",
       streamingAssetsUrl: "StreamingAssets",
       companyName: "VIR Group",
       productName: "Fruit Balls Juicy Fusion",
@@ -131,20 +131,21 @@
 
       function connected(api) {
         externalApi = api;
+        console.log("Api connected")
       }
-      
-      function check() {
+
+      window.showRewardedAds = function () {
         console.log("CHECK CALLED");
       }
-      
-      function showInterstitialAds() {
+
+      window.showRewardedAds = function () {
         externalApi.showAds({
           sources: "admanSource,admanagerSource",
           interstitial: true
         });
       }
 
-      function showRewardedAds() {
+      window.showRewardedAds = function () {
         externalApi.showAds({
           sources: "admanSource,admanagerSource",
           interstitial: false
