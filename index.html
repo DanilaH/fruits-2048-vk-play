@@ -107,7 +107,7 @@
       }
 
       var externalApi = null;
-
+      var lastAdIsInterstitial = false;
       var callbacks = {
         appid: 34343,
 
@@ -142,18 +142,18 @@
       
       window.showRewardedAds = function() {
         console.log("REWARDED CALLED");
-        externalApi.showAds({
-          sources: "admanSource,admanagerSource",
-          interstitial: false
-        });
+
+        lastAdIsInterstitial = false;
+        
+        externalApi.showAds();
       }
       
       window.showInterstitialAds = function() {
         console.log("INTERSTITIAL CALLED");
-        externalApi.showAds({
-          sources: "admanSource,admanagerSource",
-          interstitial: true
-        });
+        
+        lastAdIsInterstitial = true;
+        
+        externalApi.showAds();
       }
 
       iframeApi(callbacks).then(connected, error);
