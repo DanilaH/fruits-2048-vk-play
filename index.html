@@ -134,21 +134,23 @@
         console.log("Api connected")
       }
 
-      window.showRewardedAds = function () {
+      window.check = function() {
         console.log("CHECK CALLED");
       }
-
-      window.showRewardedAds = function () {
-        externalApi.showAds({
-          sources: "admanSource,admanagerSource",
-          interstitial: true
-        });
-      }
-
-      window.showRewardedAds = function () {
+      
+      window.showRewardedAds = function() {
+        console.log("REWARDED CALLED");
         externalApi.showAds({
           sources: "admanSource,admanagerSource",
           interstitial: false
+        });
+      }
+      
+      window.showInterstitialAds = function() {
+        console.log("INTERSTITIAL CALLED");
+        externalApi.showAds({
+          sources: "admanSource,admanagerSource",
+          interstitial: true
         });
       }
 
