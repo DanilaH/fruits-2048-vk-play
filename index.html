@@ -98,6 +98,10 @@
         
         console.log("unityInstance", unityInstance);
         console.log("myGameInstance", myGameInstance);
+
+        unityInstance.sendMessage("VkPlay", "CheckMessage");
+
+        myGameInstance.sendMessage("VkPlay", "CheckMessage");
         
         loadingBar.style.display = "none";
       }).catch(function(message) {
