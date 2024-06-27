@@ -125,7 +125,7 @@
         paymentFrameItem: function(object) {},
         getGameInventoryItems: function() {},
         adsCallback: function(context) {
-          console.log(context)
+          window.checkMessage();
         },
       };
 
@@ -161,8 +161,6 @@
       window.checkMessage = function () {
         myGameInstance.sendMessage("VkPlay", "CheckMessage");
       }
-      
-      window.checkMessage()
       
       
       iframeApi(callbacks).then(connected, error);
