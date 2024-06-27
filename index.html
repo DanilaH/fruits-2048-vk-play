@@ -71,9 +71,9 @@
     var buildUrl = "Build";
     var loaderUrl = buildUrl + "/fruits-vk-play.loader.js";
     var config = {
-      dataUrl: buildUrl + "/cc2d0ceffdf51dd7e95ca1a2a7549356.data",
-      frameworkUrl: buildUrl + "/259af39a0f2a8e5ba4f2911bcf897399.js",
-      codeUrl: buildUrl + "/a939b6ab44a7fe06805f2092daae15a1.wasm",
+      dataUrl: buildUrl + "/97cfa5c1e7a94d9972754333e2d13778.data",
+      frameworkUrl: buildUrl + "/75fd9097fd378a1938d02c8e978c067c.js",
+      codeUrl: buildUrl + "/81c43f234349b70d364e94dec637c0aa.wasm",
       streamingAssetsUrl: "StreamingAssets",
       companyName: "VIR Group",
       productName: "Fruit Balls Juicy Fusion",
@@ -123,10 +123,12 @@
         paymentFrameItem: function(object) {},
         getGameInventoryItems: function() {},
         adsCallback: function(context) {
-          
-          console.log("ADS CALLBACK CONTEXT", context);
-          
-          window.checkMessage();
+          if (lastAdIsInterstitial) {
+            window.myGameInstance.SendMessage("VkPlay", "OnInterstitialAds", JSON.stringify(context));
+          }
+          else {
+            window.myGameInstance.SendMessage("VkPlay", "OnRewardedAds", JSON.stringify(context));
+          }
         },
       };
 
@@ -157,10 +159,6 @@
         lastAdIsInterstitial = true;
         
         externalApi.showAds({interstitial: true});
-      }
-
-      window.checkMessage = function () {
-        window.myGameInstance.SendMessage("VkPlay", "CheckMessage");
       }
       
       iframeApi(callbacks).then(connected, error);
