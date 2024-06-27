@@ -88,21 +88,11 @@
     var script = document.createElement("script");
     script.src = loaderUrl;
     
-    let myGameInstance = null;
-    
     script.onload = function() {
       createUnityInstance(canvas, config, function(progress) {
         progressBar.style.width = 100 * progress + "%";
       }).then(function(unityInstance) {
-        myGameInstance = unityInstance;
-        
-        console.log("unityInstance", unityInstance);
-        console.log("myGameInstance", myGameInstance);
-
-        unityInstance.SendMessage("VkPlay", "CheckMessage");
-
-        myGameInstance.SendMessage("VkPlay", "CheckMessage");
-        
+        window.myGameInstance = unityInstance;
         loadingBar.style.display = "none";
       }).catch(function(message) {
         alert(message);
@@ -165,13 +155,13 @@
         
         externalApi.showAds({interstitial: true});
       }
+
+      window.checkMessage = function () {
+        window.myGameInstance.SendMessage("VkPlay", "CheckMessage");
+      }
       
       iframeApi(callbacks).then(connected, error);
     }(window.iframeApi));
-    
-    window.checkMessage = function () {
-      myGameInstance.sendMessage("VkPlay", "CheckMessage");
-    }
     
   </script>
 </body>
