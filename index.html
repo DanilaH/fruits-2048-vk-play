@@ -99,9 +99,9 @@
         console.log("unityInstance", unityInstance);
         console.log("myGameInstance", myGameInstance);
 
-        unityInstance.sendMessage("VkPlay", "CheckMessage");
+        unityInstance.SendMessage("VkPlay", "CheckMessage");
 
-        myGameInstance.sendMessage("VkPlay", "CheckMessage");
+        myGameInstance.SendMessage("VkPlay", "CheckMessage");
         
         loadingBar.style.display = "none";
       }).catch(function(message) {
